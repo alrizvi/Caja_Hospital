@@ -59,7 +59,7 @@
             this.btnCancelar.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.btnCancelar.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnCancelar.Location = new System.Drawing.Point(306, 303);
-            this.btnCancelar.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnCancelar.Margin = new System.Windows.Forms.Padding(2);
             this.btnCancelar.Name = "btnCancelar";
             this.btnCancelar.Size = new System.Drawing.Size(137, 60);
             this.btnCancelar.TabIndex = 24;
@@ -80,7 +80,7 @@
             this.btnAgregar.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.btnAgregar.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnAgregar.Location = new System.Drawing.Point(88, 303);
-            this.btnAgregar.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnAgregar.Margin = new System.Windows.Forms.Padding(2);
             this.btnAgregar.Name = "btnAgregar";
             this.btnAgregar.Size = new System.Drawing.Size(137, 60);
             this.btnAgregar.TabIndex = 23;
@@ -108,7 +108,7 @@
             "Cédula",
             "Pasaporte"});
             this.cbTipoDocumento.Location = new System.Drawing.Point(53, 28);
-            this.cbTipoDocumento.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.cbTipoDocumento.Margin = new System.Windows.Forms.Padding(2);
             this.cbTipoDocumento.MaxDropDownItems = 4;
             this.cbTipoDocumento.MouseState = MaterialSkin.MouseState.OUT;
             this.cbTipoDocumento.Name = "cbTipoDocumento";
@@ -127,7 +127,7 @@
             this.txtDocumento.Hint = "Documento";
             this.txtDocumento.LeadingIcon = null;
             this.txtDocumento.Location = new System.Drawing.Point(271, 28);
-            this.txtDocumento.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtDocumento.Margin = new System.Windows.Forms.Padding(2);
             this.txtDocumento.MaxLength = 50;
             this.txtDocumento.MouseState = MaterialSkin.MouseState.OUT;
             this.txtDocumento.Multiline = false;
@@ -147,7 +147,7 @@
             this.txtNombres.Hint = "Nombres";
             this.txtNombres.LeadingIcon = null;
             this.txtNombres.Location = new System.Drawing.Point(53, 68);
-            this.txtNombres.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtNombres.Margin = new System.Windows.Forms.Padding(2);
             this.txtNombres.MaxLength = 50;
             this.txtNombres.MouseState = MaterialSkin.MouseState.OUT;
             this.txtNombres.Multiline = false;
@@ -156,6 +156,7 @@
             this.txtNombres.TabIndex = 30;
             this.txtNombres.Text = "";
             this.txtNombres.TrailingIcon = null;
+            this.txtNombres.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtNombresyApellidos_KeyPress);
             // 
             // txtApellidos
             // 
@@ -166,7 +167,7 @@
             this.txtApellidos.Hint = "Apellidos";
             this.txtApellidos.LeadingIcon = null;
             this.txtApellidos.Location = new System.Drawing.Point(271, 68);
-            this.txtApellidos.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtApellidos.Margin = new System.Windows.Forms.Padding(2);
             this.txtApellidos.MaxLength = 50;
             this.txtApellidos.MouseState = MaterialSkin.MouseState.OUT;
             this.txtApellidos.Multiline = false;
@@ -175,6 +176,7 @@
             this.txtApellidos.TabIndex = 31;
             this.txtApellidos.Text = "";
             this.txtApellidos.TrailingIcon = null;
+            this.txtApellidos.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtNombresyApellidos_KeyPress);
             // 
             // txtFechaNacimiento
             // 
@@ -185,7 +187,7 @@
             this.txtFechaNacimiento.Hint = "Fecha de nacimiento (AAAA-MM-DD)";
             this.txtFechaNacimiento.LeadingIcon = null;
             this.txtFechaNacimiento.Location = new System.Drawing.Point(53, 141);
-            this.txtFechaNacimiento.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtFechaNacimiento.Margin = new System.Windows.Forms.Padding(2);
             this.txtFechaNacimiento.MaxLength = 50;
             this.txtFechaNacimiento.MouseState = MaterialSkin.MouseState.OUT;
             this.txtFechaNacimiento.Multiline = false;
@@ -204,7 +206,7 @@
             this.txtAlergias.Hint = "Alergias";
             this.txtAlergias.LeadingIcon = null;
             this.txtAlergias.Location = new System.Drawing.Point(53, 181);
-            this.txtAlergias.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtAlergias.Margin = new System.Windows.Forms.Padding(2);
             this.txtAlergias.MaxLength = 50;
             this.txtAlergias.MouseState = MaterialSkin.MouseState.OUT;
             this.txtAlergias.Multiline = false;
@@ -223,7 +225,7 @@
             this.txtEnfermedades.Hint = "Enfermedades";
             this.txtEnfermedades.LeadingIcon = null;
             this.txtEnfermedades.Location = new System.Drawing.Point(271, 181);
-            this.txtEnfermedades.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtEnfermedades.Margin = new System.Windows.Forms.Padding(2);
             this.txtEnfermedades.MaxLength = 50;
             this.txtEnfermedades.MouseState = MaterialSkin.MouseState.OUT;
             this.txtEnfermedades.Multiline = false;
@@ -242,7 +244,7 @@
             this.txtTelefono.Hint = "Teléfono";
             this.txtTelefono.LeadingIcon = null;
             this.txtTelefono.Location = new System.Drawing.Point(53, 221);
-            this.txtTelefono.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtTelefono.Margin = new System.Windows.Forms.Padding(2);
             this.txtTelefono.MaxLength = 50;
             this.txtTelefono.MouseState = MaterialSkin.MouseState.OUT;
             this.txtTelefono.Multiline = false;
@@ -261,7 +263,7 @@
             this.txtCorreo.Hint = "Correo";
             this.txtCorreo.LeadingIcon = null;
             this.txtCorreo.Location = new System.Drawing.Point(271, 221);
-            this.txtCorreo.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtCorreo.Margin = new System.Windows.Forms.Padding(2);
             this.txtCorreo.MaxLength = 50;
             this.txtCorreo.MouseState = MaterialSkin.MouseState.OUT;
             this.txtCorreo.Multiline = false;
@@ -280,7 +282,7 @@
             this.txtDireccion.Hint = "Dirección";
             this.txtDireccion.LeadingIcon = null;
             this.txtDireccion.Location = new System.Drawing.Point(53, 261);
-            this.txtDireccion.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtDireccion.Margin = new System.Windows.Forms.Padding(2);
             this.txtDireccion.MaxLength = 50;
             this.txtDireccion.MouseState = MaterialSkin.MouseState.OUT;
             this.txtDireccion.Multiline = false;
@@ -328,10 +330,10 @@
             this.materialCard1.Depth = 0;
             this.materialCard1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.materialCard1.Location = new System.Drawing.Point(73, 23);
-            this.materialCard1.Margin = new System.Windows.Forms.Padding(8, 8, 8, 8);
+            this.materialCard1.Margin = new System.Windows.Forms.Padding(8);
             this.materialCard1.MouseState = MaterialSkin.MouseState.HOVER;
             this.materialCard1.Name = "materialCard1";
-            this.materialCard1.Padding = new System.Windows.Forms.Padding(8, 8, 8, 8);
+            this.materialCard1.Padding = new System.Windows.Forms.Padding(8);
             this.materialCard1.Size = new System.Drawing.Size(543, 381);
             this.materialCard1.TabIndex = 41;
             // 
@@ -378,7 +380,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(688, 431);
             this.Controls.Add(this.materialCard1);
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "FrmClientes";
             this.Text = "FormClientes";
             this.Load += new System.EventHandler(this.FormClientes_Load);

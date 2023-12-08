@@ -392,5 +392,13 @@ namespace Caja_Hospital.Forms
                     break;
             }
         }
+
+        private void txtNombresyApellidos_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsLetter(e.KeyChar) && !char.IsControl(e.KeyChar))
+            {
+                e.Handled = true; // Si no es una letra, ignora la tecla presionada
+            }
+        }
     }
 }

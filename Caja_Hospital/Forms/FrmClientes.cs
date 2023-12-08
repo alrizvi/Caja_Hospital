@@ -368,5 +368,29 @@ namespace Caja_Hospital.Forms
         {
             txtDocumento.Text = string.Empty;
         }
+
+        private void txtDocumento_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            switch(txtDocumento.Text)
+            {
+                case "Cédula":
+
+                    if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
+                    {
+                        e.Handled = true; // Si no es un número, ignora la tecla presionada
+                    }
+
+                    break;
+
+                case "Pasaporte":
+
+                    if (!char.IsLetterOrDigit(e.KeyChar) && !char.IsControl(e.KeyChar))
+                    {
+                        e.Handled = true; // Si no es una letra ni un número, ignora la tecla presionada
+                    }
+
+                    break;
+            }
+        }
     }
 }

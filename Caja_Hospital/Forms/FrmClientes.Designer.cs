@@ -136,6 +136,7 @@
             this.txtDocumento.TabIndex = 29;
             this.txtDocumento.Text = "";
             this.txtDocumento.TrailingIcon = null;
+            this.txtDocumento.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtDocumento_KeyPress);
             // 
             // txtNombres
             // 

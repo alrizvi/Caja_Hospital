@@ -136,6 +136,7 @@
             this.txtDocumento.TabIndex = 29;
             this.txtDocumento.Text = "";
             this.txtDocumento.TrailingIcon = null;
+            this.txtDocumento.TextChanged += new System.EventHandler(this.txtTodos_TextChanged);
             this.txtDocumento.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtDocumento_KeyPress);
             // 
             // txtNombres
@@ -156,7 +157,8 @@
             this.txtNombres.TabIndex = 30;
             this.txtNombres.Text = "";
             this.txtNombres.TrailingIcon = null;
-            this.txtNombres.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtNombresyApellidos_KeyPress);
+            this.txtNombres.TextChanged += new System.EventHandler(this.txtTodos_TextChanged);
+            this.txtNombres.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtSoloLetras_KeyPress);
             // 
             // txtApellidos
             // 
@@ -176,7 +178,8 @@
             this.txtApellidos.TabIndex = 31;
             this.txtApellidos.Text = "";
             this.txtApellidos.TrailingIcon = null;
-            this.txtApellidos.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtNombresyApellidos_KeyPress);
+            this.txtApellidos.TextChanged += new System.EventHandler(this.txtTodos_TextChanged);
+            this.txtApellidos.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtSoloLetras_KeyPress);
             // 
             // txtFechaNacimiento
             // 
@@ -196,6 +199,8 @@
             this.txtFechaNacimiento.TabIndex = 33;
             this.txtFechaNacimiento.Text = "";
             this.txtFechaNacimiento.TrailingIcon = null;
+            this.txtFechaNacimiento.TextChanged += new System.EventHandler(this.txtTodos_TextChanged);
+            this.txtFechaNacimiento.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtFechaNacimiento_KeyPress);
             // 
             // txtAlergias
             // 
@@ -215,6 +220,7 @@
             this.txtAlergias.TabIndex = 34;
             this.txtAlergias.Text = "";
             this.txtAlergias.TrailingIcon = null;
+            this.txtAlergias.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtSoloLetras_KeyPress);
             // 
             // txtEnfermedades
             // 
@@ -234,6 +240,7 @@
             this.txtEnfermedades.TabIndex = 35;
             this.txtEnfermedades.Text = "";
             this.txtEnfermedades.TrailingIcon = null;
+            this.txtEnfermedades.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtSoloLetras_KeyPress);
             // 
             // txtTelefono
             // 
@@ -253,6 +260,8 @@
             this.txtTelefono.TabIndex = 36;
             this.txtTelefono.Text = "";
             this.txtTelefono.TrailingIcon = null;
+            this.txtTelefono.TextChanged += new System.EventHandler(this.txtTodos_TextChanged);
+            this.txtTelefono.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtTelefono_KeyPress);
             // 
             // txtCorreo
             // 
@@ -272,6 +281,8 @@
             this.txtCorreo.TabIndex = 37;
             this.txtCorreo.Text = "";
             this.txtCorreo.TrailingIcon = null;
+            this.txtCorreo.TextChanged += new System.EventHandler(this.txtTodos_TextChanged);
+            this.txtCorreo.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtCorreo_KeyPress);
             // 
             // txtDireccion
             // 
@@ -291,6 +302,8 @@
             this.txtDireccion.TabIndex = 38;
             this.txtDireccion.Text = "";
             this.txtDireccion.TrailingIcon = null;
+            this.txtDireccion.TextChanged += new System.EventHandler(this.txtTodos_TextChanged);
+            this.txtDireccion.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtDireccion_KeyPress);
             // 
             // rbMujer
             // 

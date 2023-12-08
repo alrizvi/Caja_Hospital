@@ -393,11 +393,62 @@ namespace Caja_Hospital.Forms
             }
         }
 
-        private void txtNombresyApellidos_KeyPress(object sender, KeyPressEventArgs e)
+        private void txtSoloLetras_KeyPress(object sender, KeyPressEventArgs e)
         {
             if (!char.IsLetter(e.KeyChar) && !char.IsControl(e.KeyChar))
             {
                 e.Handled = true; // Si no es una letra, ignora la tecla presionada
+            }
+        }
+
+        private void txtFechaNacimiento_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsDigit(e.KeyChar) && e.KeyChar != '-' && !char.IsControl(e.KeyChar))
+            {
+                e.Handled = true; // Si no es un número ni un guion, ignora la tecla presionada
+            }
+
+            // Verifica que no haya más de un guion en el texto
+            if (e.KeyChar == '-' && txtFechaNacimiento.Text.Contains("-"))
+            {
+                e.Handled = true; // Si ya hay un guion, ignora la tecla presionada
+            }
+        }
+
+        private void txtTelefono_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
+            {
+                e.Handled = true; // Si no es un número, ignora la tecla presionada
+            }
+        }
+
+        private void txtCorreo_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsLetter(e.KeyChar) && e.KeyChar != '.' && e.KeyChar != '@' && e.KeyChar != '_' && !char.IsControl(e.KeyChar))
+            {
+                e.Handled = true; // Si no es un carácter permitido, ignora la tecla presionada
+            }
+        }
+
+        private void txtDireccion_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsLetter(e.KeyChar) && e.KeyChar != '.' && e.KeyChar != '-' && e.KeyChar != '_' && e.KeyChar != '|' && e.KeyChar != '\'' && e.KeyChar != ',' && e.KeyChar != '`' && !char.IsControl(e.KeyChar))
+            {
+                e.Handled = true; // Si no es una letra ni uno de los signos permitidos, ignora la tecla presionada
+            }
+        }
+
+        private void txtTodos_TextChanged(object sender, EventArgs e)
+        {
+            if (txtDocumento.Text != string.Empty && txtNombres.Text != string.Empty && txtApellidos.Text != string.Empty && txtFechaNacimiento.Text != string.Empty && txtTelefono.Text != string.Empty && txtCorreo.Text != string.Empty && txtDireccion.Text != string.Empty)
+            {
+                btnAgregar.Enabled = true;
+            }
+
+            else
+            {
+                btnAgregar.Enabled = false;
             }
         }
     }

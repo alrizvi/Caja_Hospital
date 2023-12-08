@@ -363,5 +363,10 @@ namespace Caja_Hospital.Forms
             public string IdSexo { get; set; } 
             // Añade más propiedades según los datos que necesites
         }
+
+        private void cbTipoDocumento_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            txtDocumento.Text = string.Empty;
+        }
     }
 }

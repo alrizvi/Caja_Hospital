@@ -207,7 +207,7 @@ namespace Caja_Hospital.Forms
 
         private void txtSoloLetras_KeyPress(object sender, KeyPressEventArgs e)
         { 
-            if (!char.IsLetter(e.KeyChar) && !char.IsControl(e.KeyChar))
+            if (!char.IsLetter(e.KeyChar) && !char.IsControl(e.KeyChar) && e.KeyChar != ' ')
             {
                 e.Handled = true; // Si no es una letra, ignora la tecla presionada
             }
@@ -245,7 +245,7 @@ namespace Caja_Hospital.Forms
 
         private void txtDireccion_KeyPress(object sender, KeyPressEventArgs e)
         {
-            if (!char.IsLetter(e.KeyChar) && e.KeyChar != '.' && e.KeyChar != '-' && e.KeyChar != '_' && e.KeyChar != '|' && e.KeyChar != '\'' && e.KeyChar != ',' && e.KeyChar != '`' && !char.IsDigit(e.KeyChar) && !char.IsControl(e.KeyChar))
+            if (!char.IsLetter(e.KeyChar) && e.KeyChar != '.' && e.KeyChar != '-' && e.KeyChar != '_' && e.KeyChar != '|' && e.KeyChar != '\'' && e.KeyChar != ',' && e.KeyChar != '`' && e.KeyChar != ' '  && !char.IsDigit(e.KeyChar) && !char.IsControl(e.KeyChar))
             {
                 e.Handled = true; // Si no es una letra ni uno de los signos permitidos, ignora la tecla presionada
             }

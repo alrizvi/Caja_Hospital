@@ -28,13 +28,13 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
             this.materialCard1 = new MaterialSkin.Controls.MaterialCard();
             this.txtAutorizacion = new MaterialSkin.Controls.MaterialTextBox();
             this.txtCantidad = new MaterialSkin.Controls.MaterialTextBox();
-            this.btnImprimir = new FontAwesome.Sharp.IconButton();
+            this.btnPagar = new FontAwesome.Sharp.IconButton();
             this.lblDevolucion = new System.Windows.Forms.Label();
             this.lblTotalAPagar = new System.Windows.Forms.Label();
             this.txtPagado = new System.Windows.Forms.TextBox();
@@ -53,10 +53,10 @@
             this.txtCosto = new MaterialSkin.Controls.MaterialTextBox();
             this.btnConsultar = new MaterialSkin.Controls.MaterialButton();
             this.txtDocumento = new MaterialSkin.Controls.MaterialTextBox();
-            this.txtNombres = new MaterialSkin.Controls.MaterialTextBox();
             this.btnCancelar = new FontAwesome.Sharp.IconButton();
             this.btnAgregar = new FontAwesome.Sharp.IconButton();
             this.cbServicio = new MaterialSkin.Controls.MaterialComboBox();
+            this.lblNombres = new System.Windows.Forms.Label();
             this.materialCard1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
@@ -67,9 +67,10 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.materialCard1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.materialCard1.Controls.Add(this.lblNombres);
             this.materialCard1.Controls.Add(this.txtAutorizacion);
             this.materialCard1.Controls.Add(this.txtCantidad);
-            this.materialCard1.Controls.Add(this.btnImprimir);
+            this.materialCard1.Controls.Add(this.btnPagar);
             this.materialCard1.Controls.Add(this.lblDevolucion);
             this.materialCard1.Controls.Add(this.lblTotalAPagar);
             this.materialCard1.Controls.Add(this.txtPagado);
@@ -83,7 +84,6 @@
             this.materialCard1.Controls.Add(this.txtCosto);
             this.materialCard1.Controls.Add(this.btnConsultar);
             this.materialCard1.Controls.Add(this.txtDocumento);
-            this.materialCard1.Controls.Add(this.txtNombres);
             this.materialCard1.Controls.Add(this.btnCancelar);
             this.materialCard1.Controls.Add(this.btnAgregar);
             this.materialCard1.Controls.Add(this.cbServicio);
@@ -134,25 +134,25 @@
             this.txtCantidad.Text = "1";
             this.txtCantidad.TrailingIcon = null;
             // 
-            // btnImprimir
+            // btnPagar
             // 
-            this.btnImprimir.BackColor = System.Drawing.Color.Gray;
-            this.btnImprimir.FlatAppearance.BorderSize = 0;
-            this.btnImprimir.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnImprimir.Font = new System.Drawing.Font("Century Gothic", 8.142858F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnImprimir.ForeColor = System.Drawing.Color.White;
-            this.btnImprimir.IconChar = FontAwesome.Sharp.IconChar.Print;
-            this.btnImprimir.IconColor = System.Drawing.Color.White;
-            this.btnImprimir.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            this.btnImprimir.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnImprimir.Location = new System.Drawing.Point(629, 601);
-            this.btnImprimir.Name = "btnImprimir";
-            this.btnImprimir.Size = new System.Drawing.Size(285, 64);
-            this.btnImprimir.TabIndex = 60;
-            this.btnImprimir.Text = "Imprimir";
-            this.btnImprimir.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btnImprimir.UseVisualStyleBackColor = false;
-            this.btnImprimir.Click += new System.EventHandler(this.iconButton1_Click);
+            this.btnPagar.BackColor = System.Drawing.Color.Gray;
+            this.btnPagar.FlatAppearance.BorderSize = 0;
+            this.btnPagar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnPagar.Font = new System.Drawing.Font("Century Gothic", 8.142858F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnPagar.ForeColor = System.Drawing.Color.White;
+            this.btnPagar.IconChar = FontAwesome.Sharp.IconChar.Receipt;
+            this.btnPagar.IconColor = System.Drawing.Color.White;
+            this.btnPagar.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.btnPagar.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnPagar.Location = new System.Drawing.Point(629, 601);
+            this.btnPagar.Name = "btnPagar";
+            this.btnPagar.Size = new System.Drawing.Size(285, 64);
+            this.btnPagar.TabIndex = 60;
+            this.btnPagar.Text = "Pagar";
+            this.btnPagar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnPagar.UseVisualStyleBackColor = false;
+            this.btnPagar.Click += new System.EventHandler(this.iconButton1_Click);
             // 
             // lblDevolucion
             // 
@@ -225,14 +225,14 @@
             this.dataGridView1.AllowUserToAddRows = false;
             this.dataGridView1.AllowUserToDeleteRows = false;
             this.dataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Century Gothic", 8.142858F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Century Gothic", 8.142858F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle4;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Column1,
@@ -244,20 +244,20 @@
             this.dataGridView1.Location = new System.Drawing.Point(470, 51);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.ReadOnly = true;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.142858F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridView1.RowHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle5.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle5.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.142858F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridView1.RowHeadersDefaultCellStyle = dataGridViewCellStyle5;
             this.dataGridView1.RowHeadersVisible = false;
             this.dataGridView1.RowHeadersWidth = 72;
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Century Gothic", 8.142858F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.Black;
-            this.dataGridView1.RowsDefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle6.Font = new System.Drawing.Font("Century Gothic", 8.142858F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle6.ForeColor = System.Drawing.Color.Black;
+            this.dataGridView1.RowsDefaultCellStyle = dataGridViewCellStyle6;
             this.dataGridView1.RowTemplate.Height = 31;
             this.dataGridView1.Size = new System.Drawing.Size(612, 299);
             this.dataGridView1.TabIndex = 52;
@@ -412,24 +412,6 @@
             this.txtDocumento.Text = "";
             this.txtDocumento.TrailingIcon = null;
             // 
-            // txtNombres
-            // 
-            this.txtNombres.AnimateReadOnly = false;
-            this.txtNombres.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.txtNombres.Depth = 0;
-            this.txtNombres.Font = new System.Drawing.Font("Roboto", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
-            this.txtNombres.Hint = "Nombres";
-            this.txtNombres.LeadingIcon = null;
-            this.txtNombres.Location = new System.Drawing.Point(43, 125);
-            this.txtNombres.MaxLength = 50;
-            this.txtNombres.MouseState = MaterialSkin.MouseState.OUT;
-            this.txtNombres.Multiline = false;
-            this.txtNombres.Name = "txtNombres";
-            this.txtNombres.Size = new System.Drawing.Size(379, 50);
-            this.txtNombres.TabIndex = 43;
-            this.txtNombres.Text = "";
-            this.txtNombres.TrailingIcon = null;
-            // 
             // btnCancelar
             // 
             this.btnCancelar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(0)))), ((int)(((byte)(63)))));
@@ -494,6 +476,17 @@
             this.cbServicio.TabIndex = 28;
             this.cbServicio.SelectedIndexChanged += new System.EventHandler(this.cbServicio_SelectedIndexChanged);
             // 
+            // lblNombres
+            // 
+            this.lblNombres.AutoSize = true;
+            this.lblNombres.Font = new System.Drawing.Font("Century Gothic", 9.857143F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblNombres.Location = new System.Drawing.Point(50, 137);
+            this.lblNombres.Name = "lblNombres";
+            this.lblNombres.Size = new System.Drawing.Size(118, 28);
+            this.lblNombres.TabIndex = 63;
+            this.lblNombres.Text = "Nombres";
+            this.lblNombres.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
             // FrmCuentas
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(11F, 24F);
@@ -518,7 +511,6 @@
         private MaterialSkin.Controls.MaterialComboBox cbServicio;
         private MaterialSkin.Controls.MaterialButton btnConsultar;
         private MaterialSkin.Controls.MaterialTextBox txtDocumento;
-        private MaterialSkin.Controls.MaterialTextBox txtNombres;
         private MaterialSkin.Controls.MaterialTextBox txtCosto;
         private MaterialSkin.Controls.MaterialComboBox cbTipoServicio;
         private MaterialSkin.Controls.MaterialRadioButton rbTerjetaCredito;
@@ -530,7 +522,7 @@
         private System.Windows.Forms.TextBox txtPagado;
         private System.Windows.Forms.Label lblDevolucion;
         private System.Windows.Forms.Label lblTotalAPagar;
-        private FontAwesome.Sharp.IconButton btnImprimir;
+        private FontAwesome.Sharp.IconButton btnPagar;
         private MaterialSkin.Controls.MaterialTextBox txtCantidad;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
@@ -538,5 +530,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Cantidad;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column4;
         private MaterialSkin.Controls.MaterialTextBox txtAutorizacion;
+        private System.Windows.Forms.Label lblNombres;
     }
 }

@@ -195,5 +195,11 @@ namespace Caja_Hospital
         private void FormMainMenu_Load(object sender, EventArgs e)
         {
         }
+
+        private void btnSalidaEfectivo_Click(object sender, EventArgs e)
+        {
+            ActivateButton(sender, RGBColors.color1);
+            OpenChildFrom(new FrmSalidaEfectivo());
+        }
     }
 }

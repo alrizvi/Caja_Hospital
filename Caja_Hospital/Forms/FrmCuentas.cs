@@ -152,14 +152,14 @@ namespace Caja_Hospital.Forms
                 // Verifica si se encontró un paciente con la cédula
                 if (result != null)
                 {
-                    // Si se encontró, muestra el nombre completo en el txtNombres
-                    txtNombres.Text = result.ToString();
+                    // Si se encontró, muestra el nombre completo en el lblNombres
+                    lblNombres.Text = result.ToString();
                 }
                 else
                 {
                     // Si no se encontró, muestra un mensaje indicando que no existe el paciente
                     MessageBox.Show("No se encontró ningún paciente con la cédula ingresada.");
-                    txtNombres.Text = string.Empty; // Limpia el TextBox si no se encuentra un paciente
+                    lblNombres.Text = "Nombres"; // Limpia el Label si no se encuentra un paciente
                 }
             }
         }
@@ -306,7 +306,7 @@ namespace Caja_Hospital.Forms
             Ticket1.TextoCentro("CEMED Hospital"); //imprime una linea de descripcion
             Ticket1.TextoCentro("**********************************");
 
-            Ticket1.TextoIzquierda("Cliente: " + txtNombres.Text);
+            Ticket1.TextoIzquierda("Cliente: " + lblNombres.Text);
             Ticket1.TextoIzquierda("Cedula: " + txtDocumento.Text);
             Ticket1.TextoIzquierda("");
             Ticket1.TextoCentro("Factura de Venta"); //imprime una linea de descripcion
@@ -348,7 +348,7 @@ namespace Caja_Hospital.Forms
 
             MessageBox.Show("Gracias por preferirnos");
 
-            txtDocumento.Text = txtNombres.Text = txtPagado.Text = lblDevolucion.Text = lblTotalAPagar.Text = "";
+            txtDocumento.Text = lblNombres.Text = txtPagado.Text = lblDevolucion.Text = lblTotalAPagar.Text = "";
         }
     }
 }

@@ -29,12 +29,12 @@
         private void InitializeComponent()
         {
             this.materialCard1 = new MaterialSkin.Controls.MaterialCard();
-            this.txtAutorizacion = new MaterialSkin.Controls.MaterialTextBox();
-            this.txtCosto = new MaterialSkin.Controls.MaterialTextBox();
+            this.txtRecibido = new MaterialSkin.Controls.MaterialTextBox();
+            this.txtConcepto = new MaterialSkin.Controls.MaterialMultiLineTextBox2();
             this.btnCancelar = new FontAwesome.Sharp.IconButton();
             this.btnRetirar = new FontAwesome.Sharp.IconButton();
-            this.txtConcepto = new MaterialSkin.Controls.MaterialMultiLineTextBox2();
-            this.txtRecibido = new MaterialSkin.Controls.MaterialTextBox();
+            this.txtAutorizacion = new MaterialSkin.Controls.MaterialTextBox();
+            this.txtCosto = new MaterialSkin.Controls.MaterialTextBox();
             this.materialCard1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -60,41 +60,50 @@
             this.materialCard1.Size = new System.Drawing.Size(1127, 703);
             this.materialCard1.TabIndex = 44;
             // 
-            // txtAutorizacion
+            // txtRecibido
             // 
-            this.txtAutorizacion.AnimateReadOnly = false;
-            this.txtAutorizacion.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.txtAutorizacion.Depth = 0;
-            this.txtAutorizacion.Font = new System.Drawing.Font("Roboto", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
-            this.txtAutorizacion.Hint = "Autorizado por:";
-            this.txtAutorizacion.LeadingIcon = null;
-            this.txtAutorizacion.Location = new System.Drawing.Point(168, 54);
-            this.txtAutorizacion.MaxLength = 50;
-            this.txtAutorizacion.MouseState = MaterialSkin.MouseState.OUT;
-            this.txtAutorizacion.Multiline = false;
-            this.txtAutorizacion.Name = "txtAutorizacion";
-            this.txtAutorizacion.Size = new System.Drawing.Size(379, 50);
-            this.txtAutorizacion.TabIndex = 62;
-            this.txtAutorizacion.Text = "";
-            this.txtAutorizacion.TrailingIcon = null;
+            this.txtRecibido.AnimateReadOnly = false;
+            this.txtRecibido.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.txtRecibido.Depth = 0;
+            this.txtRecibido.Font = new System.Drawing.Font("Roboto", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            this.txtRecibido.Hint = "Recibido por:";
+            this.txtRecibido.LeadingIcon = null;
+            this.txtRecibido.Location = new System.Drawing.Point(567, 54);
+            this.txtRecibido.MaxLength = 50;
+            this.txtRecibido.MouseState = MaterialSkin.MouseState.OUT;
+            this.txtRecibido.Multiline = false;
+            this.txtRecibido.Name = "txtRecibido";
+            this.txtRecibido.Size = new System.Drawing.Size(379, 50);
+            this.txtRecibido.TabIndex = 67;
+            this.txtRecibido.Text = "";
+            this.txtRecibido.TrailingIcon = null;
+            this.txtRecibido.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtSoloLetras_KeyPress);
             // 
-            // txtCosto
+            // txtConcepto
             // 
-            this.txtCosto.AnimateReadOnly = false;
-            this.txtCosto.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.txtCosto.Depth = 0;
-            this.txtCosto.Font = new System.Drawing.Font("Roboto", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
-            this.txtCosto.Hint = "Monto de:";
-            this.txtCosto.LeadingIcon = null;
-            this.txtCosto.Location = new System.Drawing.Point(168, 152);
-            this.txtCosto.MaxLength = 50;
-            this.txtCosto.MouseState = MaterialSkin.MouseState.OUT;
-            this.txtCosto.Multiline = false;
-            this.txtCosto.Name = "txtCosto";
-            this.txtCosto.Size = new System.Drawing.Size(778, 50);
-            this.txtCosto.TabIndex = 47;
-            this.txtCosto.Text = "";
-            this.txtCosto.TrailingIcon = null;
+            this.txtConcepto.AnimateReadOnly = false;
+            this.txtConcepto.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.txtConcepto.CharacterCasing = System.Windows.Forms.CharacterCasing.Normal;
+            this.txtConcepto.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.txtConcepto.Depth = 0;
+            this.txtConcepto.HideSelection = true;
+            this.txtConcepto.Hint = "Concepto:";
+            this.txtConcepto.Location = new System.Drawing.Point(168, 250);
+            this.txtConcepto.MaxLength = 32767;
+            this.txtConcepto.MouseState = MaterialSkin.MouseState.OUT;
+            this.txtConcepto.Name = "txtConcepto";
+            this.txtConcepto.PasswordChar = '\0';
+            this.txtConcepto.ReadOnly = false;
+            this.txtConcepto.ScrollBars = System.Windows.Forms.ScrollBars.None;
+            this.txtConcepto.SelectedText = "";
+            this.txtConcepto.SelectionLength = 0;
+            this.txtConcepto.SelectionStart = 0;
+            this.txtConcepto.ShortcutsEnabled = true;
+            this.txtConcepto.Size = new System.Drawing.Size(778, 239);
+            this.txtConcepto.TabIndex = 66;
+            this.txtConcepto.TabStop = false;
+            this.txtConcepto.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.txtConcepto.UseSystemPasswordChar = false;
             // 
             // btnCancelar
             // 
@@ -123,7 +132,7 @@
             this.btnRetirar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnRetirar.Font = new System.Drawing.Font("Century Gothic", 8.142858F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnRetirar.ForeColor = System.Drawing.Color.White;
-            this.btnRetirar.IconChar = FontAwesome.Sharp.IconChar.UserPlus;
+            this.btnRetirar.IconChar = FontAwesome.Sharp.IconChar.MoneyCheckDollar;
             this.btnRetirar.IconColor = System.Drawing.Color.White;
             this.btnRetirar.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.btnRetirar.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -136,49 +145,43 @@
             this.btnRetirar.UseVisualStyleBackColor = false;
             this.btnRetirar.Click += new System.EventHandler(this.btnAgregar_Click);
             // 
-            // txtConcepto
+            // txtAutorizacion
             // 
-            this.txtConcepto.AnimateReadOnly = false;
-            this.txtConcepto.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.txtConcepto.CharacterCasing = System.Windows.Forms.CharacterCasing.Normal;
-            this.txtConcepto.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.txtConcepto.Depth = 0;
-            this.txtConcepto.HideSelection = true;
-            this.txtConcepto.Hint = "Concepto:";
-            this.txtConcepto.Location = new System.Drawing.Point(168, 250);
-            this.txtConcepto.MaxLength = 32767;
-            this.txtConcepto.MouseState = MaterialSkin.MouseState.OUT;
-            this.txtConcepto.Name = "txtConcepto";
-            this.txtConcepto.PasswordChar = '\0';
-            this.txtConcepto.ReadOnly = false;
-            this.txtConcepto.ScrollBars = System.Windows.Forms.ScrollBars.None;
-            this.txtConcepto.SelectedText = "";
-            this.txtConcepto.SelectionLength = 0;
-            this.txtConcepto.SelectionStart = 0;
-            this.txtConcepto.ShortcutsEnabled = true;
-            this.txtConcepto.Size = new System.Drawing.Size(778, 239);
-            this.txtConcepto.TabIndex = 66;
-            this.txtConcepto.TabStop = false;
-            this.txtConcepto.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
-            this.txtConcepto.UseSystemPasswordChar = false;
+            this.txtAutorizacion.AnimateReadOnly = false;
+            this.txtAutorizacion.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.txtAutorizacion.Depth = 0;
+            this.txtAutorizacion.Font = new System.Drawing.Font("Roboto", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            this.txtAutorizacion.Hint = "Autorizado por:";
+            this.txtAutorizacion.LeadingIcon = null;
+            this.txtAutorizacion.Location = new System.Drawing.Point(168, 54);
+            this.txtAutorizacion.MaxLength = 50;
+            this.txtAutorizacion.MouseState = MaterialSkin.MouseState.OUT;
+            this.txtAutorizacion.Multiline = false;
+            this.txtAutorizacion.Name = "txtAutorizacion";
+            this.txtAutorizacion.Size = new System.Drawing.Size(379, 50);
+            this.txtAutorizacion.TabIndex = 62;
+            this.txtAutorizacion.Text = "";
+            this.txtAutorizacion.TrailingIcon = null;
+            this.txtAutorizacion.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtSoloLetras_KeyPress);
             // 
-            // txtRecibido
+            // txtCosto
             // 
-            this.txtRecibido.AnimateReadOnly = false;
-            this.txtRecibido.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.txtRecibido.Depth = 0;
-            this.txtRecibido.Font = new System.Drawing.Font("Roboto", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
-            this.txtRecibido.Hint = "Recibido por:";
-            this.txtRecibido.LeadingIcon = null;
-            this.txtRecibido.Location = new System.Drawing.Point(567, 54);
-            this.txtRecibido.MaxLength = 50;
-            this.txtRecibido.MouseState = MaterialSkin.MouseState.OUT;
-            this.txtRecibido.Multiline = false;
-            this.txtRecibido.Name = "txtRecibido";
-            this.txtRecibido.Size = new System.Drawing.Size(379, 50);
-            this.txtRecibido.TabIndex = 67;
-            this.txtRecibido.Text = "";
-            this.txtRecibido.TrailingIcon = null;
+            this.txtCosto.AnimateReadOnly = false;
+            this.txtCosto.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.txtCosto.Depth = 0;
+            this.txtCosto.Font = new System.Drawing.Font("Roboto", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            this.txtCosto.Hint = "Monto de:";
+            this.txtCosto.LeadingIcon = null;
+            this.txtCosto.Location = new System.Drawing.Point(168, 152);
+            this.txtCosto.MaxLength = 50;
+            this.txtCosto.MouseState = MaterialSkin.MouseState.OUT;
+            this.txtCosto.Multiline = false;
+            this.txtCosto.Name = "txtCosto";
+            this.txtCosto.Size = new System.Drawing.Size(778, 50);
+            this.txtCosto.TabIndex = 47;
+            this.txtCosto.Text = "";
+            this.txtCosto.TrailingIcon = null;
+            this.txtCosto.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtSoloNumeros_KeyPress);
             // 
             // FrmSalidaEfectivo
             // 

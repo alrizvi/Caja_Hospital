@@ -19,11 +19,11 @@ namespace Caja_Hospital
             Application.SetCompatibleTextRenderingDefault(false);
 
             FormMainMenu mainForm = new FormMainMenu();
-            mainForm.Hide(); // Ocultar el Main Form al principio
+            //mainForm.Hide(); // Ocultar el Main Form al principio
 
-            Inicio loginForm = new Inicio();
-            loginForm.MainForm = mainForm; // Establece la referencia al Main Form
-            Application.Run(loginForm); // Inicia el formulario de inicio
+            //Inicio loginForm = new Inicio();
+            //loginForm.MainForm = mainForm; // Establece la referencia al Main Form
+            Application.Run(mainForm); // Inicia el formulario de inicio
         }
 
     }

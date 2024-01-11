@@ -42,6 +42,7 @@
             this.txtDireccion = new MaterialSkin.Controls.MaterialTextBox();
             this.rbMujer = new MaterialSkin.Controls.MaterialRadioButton();
             this.materialCard1 = new MaterialSkin.Controls.MaterialCard();
+            this.txtTiposangre = new MaterialSkin.Controls.MaterialTextBox();
             this.btnConsultar = new MaterialSkin.Controls.MaterialButton();
             this.rbHombre = new MaterialSkin.Controls.MaterialRadioButton();
             this.materialCard1.SuspendLayout();
@@ -52,16 +53,16 @@
             this.btnCancelar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(0)))), ((int)(((byte)(63)))));
             this.btnCancelar.FlatAppearance.BorderSize = 0;
             this.btnCancelar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnCancelar.Font = new System.Drawing.Font("Century Gothic", 8.142858F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnCancelar.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.142858F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnCancelar.ForeColor = System.Drawing.Color.White;
             this.btnCancelar.IconChar = FontAwesome.Sharp.IconChar.Eraser;
             this.btnCancelar.IconColor = System.Drawing.Color.White;
             this.btnCancelar.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.btnCancelar.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnCancelar.Location = new System.Drawing.Point(306, 303);
-            this.btnCancelar.Margin = new System.Windows.Forms.Padding(2);
+            this.btnCancelar.Location = new System.Drawing.Point(612, 583);
+            this.btnCancelar.Margin = new System.Windows.Forms.Padding(4);
             this.btnCancelar.Name = "btnCancelar";
-            this.btnCancelar.Size = new System.Drawing.Size(137, 60);
+            this.btnCancelar.Size = new System.Drawing.Size(274, 115);
             this.btnCancelar.TabIndex = 24;
             this.btnCancelar.Text = "Limpiar";
             this.btnCancelar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
@@ -74,16 +75,16 @@
             this.btnAgregar.Enabled = false;
             this.btnAgregar.FlatAppearance.BorderSize = 0;
             this.btnAgregar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnAgregar.Font = new System.Drawing.Font("Century Gothic", 8.142858F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAgregar.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.142858F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnAgregar.ForeColor = System.Drawing.Color.White;
             this.btnAgregar.IconChar = FontAwesome.Sharp.IconChar.UserPlus;
             this.btnAgregar.IconColor = System.Drawing.Color.White;
             this.btnAgregar.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.btnAgregar.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnAgregar.Location = new System.Drawing.Point(88, 303);
-            this.btnAgregar.Margin = new System.Windows.Forms.Padding(2);
+            this.btnAgregar.Location = new System.Drawing.Point(176, 583);
+            this.btnAgregar.Margin = new System.Windows.Forms.Padding(4);
             this.btnAgregar.Name = "btnAgregar";
-            this.btnAgregar.Size = new System.Drawing.Size(137, 60);
+            this.btnAgregar.Size = new System.Drawing.Size(274, 115);
             this.btnAgregar.TabIndex = 23;
             this.btnAgregar.Text = "Agregar";
             this.btnAgregar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
@@ -99,7 +100,7 @@
             this.cbTipoDocumento.DropDownHeight = 174;
             this.cbTipoDocumento.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbTipoDocumento.DropDownWidth = 121;
-            this.cbTipoDocumento.Font = new System.Drawing.Font("Century Gothic", 9.857143F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cbTipoDocumento.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.857143F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cbTipoDocumento.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.cbTipoDocumento.FormattingEnabled = true;
             this.cbTipoDocumento.Hint = "Tipo Documento";
@@ -108,12 +109,12 @@
             this.cbTipoDocumento.Items.AddRange(new object[] {
             "Cédula",
             "Pasaporte"});
-            this.cbTipoDocumento.Location = new System.Drawing.Point(53, 28);
-            this.cbTipoDocumento.Margin = new System.Windows.Forms.Padding(2);
+            this.cbTipoDocumento.Location = new System.Drawing.Point(106, 54);
+            this.cbTipoDocumento.Margin = new System.Windows.Forms.Padding(4);
             this.cbTipoDocumento.MaxDropDownItems = 4;
             this.cbTipoDocumento.MouseState = MaterialSkin.MouseState.OUT;
             this.cbTipoDocumento.Name = "cbTipoDocumento";
-            this.cbTipoDocumento.Size = new System.Drawing.Size(209, 49);
+            this.cbTipoDocumento.Size = new System.Drawing.Size(414, 49);
             this.cbTipoDocumento.StartIndex = 0;
             this.cbTipoDocumento.TabIndex = 28;
             this.cbTipoDocumento.SelectedIndexChanged += new System.EventHandler(this.cbTipoDocumento_SelectedIndexChanged);
@@ -125,15 +126,15 @@
             this.txtDocumento.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.txtDocumento.Depth = 0;
             this.txtDocumento.Font = new System.Drawing.Font("Roboto", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
-            this.txtDocumento.Hint = "Documento";
+            this.txtDocumento.Hint = "Documento*";
             this.txtDocumento.LeadingIcon = null;
-            this.txtDocumento.Location = new System.Drawing.Point(271, 28);
-            this.txtDocumento.Margin = new System.Windows.Forms.Padding(2);
+            this.txtDocumento.Location = new System.Drawing.Point(542, 54);
+            this.txtDocumento.Margin = new System.Windows.Forms.Padding(4);
             this.txtDocumento.MaxLength = 50;
             this.txtDocumento.MouseState = MaterialSkin.MouseState.OUT;
             this.txtDocumento.Multiline = false;
             this.txtDocumento.Name = "txtDocumento";
-            this.txtDocumento.Size = new System.Drawing.Size(145, 50);
+            this.txtDocumento.Size = new System.Drawing.Size(290, 50);
             this.txtDocumento.TabIndex = 29;
             this.txtDocumento.Text = "";
             this.txtDocumento.TrailingIcon = null;
@@ -146,15 +147,15 @@
             this.txtNombres.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.txtNombres.Depth = 0;
             this.txtNombres.Font = new System.Drawing.Font("Roboto", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
-            this.txtNombres.Hint = "Nombres";
+            this.txtNombres.Hint = "Nombres*";
             this.txtNombres.LeadingIcon = null;
-            this.txtNombres.Location = new System.Drawing.Point(53, 68);
-            this.txtNombres.Margin = new System.Windows.Forms.Padding(2);
+            this.txtNombres.Location = new System.Drawing.Point(106, 131);
+            this.txtNombres.Margin = new System.Windows.Forms.Padding(4);
             this.txtNombres.MaxLength = 50;
             this.txtNombres.MouseState = MaterialSkin.MouseState.OUT;
             this.txtNombres.Multiline = false;
             this.txtNombres.Name = "txtNombres";
-            this.txtNombres.Size = new System.Drawing.Size(207, 50);
+            this.txtNombres.Size = new System.Drawing.Size(414, 50);
             this.txtNombres.TabIndex = 30;
             this.txtNombres.Text = "";
             this.txtNombres.TrailingIcon = null;
@@ -167,15 +168,15 @@
             this.txtApellidos.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.txtApellidos.Depth = 0;
             this.txtApellidos.Font = new System.Drawing.Font("Roboto", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
-            this.txtApellidos.Hint = "Apellidos";
+            this.txtApellidos.Hint = "Apellidos*";
             this.txtApellidos.LeadingIcon = null;
-            this.txtApellidos.Location = new System.Drawing.Point(271, 68);
-            this.txtApellidos.Margin = new System.Windows.Forms.Padding(2);
+            this.txtApellidos.Location = new System.Drawing.Point(542, 131);
+            this.txtApellidos.Margin = new System.Windows.Forms.Padding(4);
             this.txtApellidos.MaxLength = 50;
             this.txtApellidos.MouseState = MaterialSkin.MouseState.OUT;
             this.txtApellidos.Multiline = false;
             this.txtApellidos.Name = "txtApellidos";
-            this.txtApellidos.Size = new System.Drawing.Size(207, 50);
+            this.txtApellidos.Size = new System.Drawing.Size(414, 50);
             this.txtApellidos.TabIndex = 31;
             this.txtApellidos.Text = "";
             this.txtApellidos.TrailingIcon = null;
@@ -188,15 +189,15 @@
             this.txtFechaNacimiento.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.txtFechaNacimiento.Depth = 0;
             this.txtFechaNacimiento.Font = new System.Drawing.Font("Roboto", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
-            this.txtFechaNacimiento.Hint = "Fecha de nacimiento (AAAA-MM-DD)";
+            this.txtFechaNacimiento.Hint = "Fecha de nacimiento (AAAA-MM-DD)*";
             this.txtFechaNacimiento.LeadingIcon = null;
-            this.txtFechaNacimiento.Location = new System.Drawing.Point(53, 141);
-            this.txtFechaNacimiento.Margin = new System.Windows.Forms.Padding(2);
+            this.txtFechaNacimiento.Location = new System.Drawing.Point(106, 271);
+            this.txtFechaNacimiento.Margin = new System.Windows.Forms.Padding(4);
             this.txtFechaNacimiento.MaxLength = 50;
             this.txtFechaNacimiento.MouseState = MaterialSkin.MouseState.OUT;
             this.txtFechaNacimiento.Multiline = false;
             this.txtFechaNacimiento.Name = "txtFechaNacimiento";
-            this.txtFechaNacimiento.Size = new System.Drawing.Size(424, 50);
+            this.txtFechaNacimiento.Size = new System.Drawing.Size(414, 50);
             this.txtFechaNacimiento.TabIndex = 33;
             this.txtFechaNacimiento.Text = "";
             this.txtFechaNacimiento.TrailingIcon = null;
@@ -211,13 +212,13 @@
             this.txtAlergias.Font = new System.Drawing.Font("Roboto", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
             this.txtAlergias.Hint = "Alergias";
             this.txtAlergias.LeadingIcon = null;
-            this.txtAlergias.Location = new System.Drawing.Point(53, 181);
-            this.txtAlergias.Margin = new System.Windows.Forms.Padding(2);
+            this.txtAlergias.Location = new System.Drawing.Point(106, 348);
+            this.txtAlergias.Margin = new System.Windows.Forms.Padding(4);
             this.txtAlergias.MaxLength = 50;
             this.txtAlergias.MouseState = MaterialSkin.MouseState.OUT;
             this.txtAlergias.Multiline = false;
             this.txtAlergias.Name = "txtAlergias";
-            this.txtAlergias.Size = new System.Drawing.Size(207, 50);
+            this.txtAlergias.Size = new System.Drawing.Size(414, 50);
             this.txtAlergias.TabIndex = 34;
             this.txtAlergias.Text = "";
             this.txtAlergias.TrailingIcon = null;
@@ -231,13 +232,13 @@
             this.txtEnfermedades.Font = new System.Drawing.Font("Roboto", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
             this.txtEnfermedades.Hint = "Enfermedades";
             this.txtEnfermedades.LeadingIcon = null;
-            this.txtEnfermedades.Location = new System.Drawing.Point(271, 181);
-            this.txtEnfermedades.Margin = new System.Windows.Forms.Padding(2);
+            this.txtEnfermedades.Location = new System.Drawing.Point(542, 348);
+            this.txtEnfermedades.Margin = new System.Windows.Forms.Padding(4);
             this.txtEnfermedades.MaxLength = 50;
             this.txtEnfermedades.MouseState = MaterialSkin.MouseState.OUT;
             this.txtEnfermedades.Multiline = false;
             this.txtEnfermedades.Name = "txtEnfermedades";
-            this.txtEnfermedades.Size = new System.Drawing.Size(207, 50);
+            this.txtEnfermedades.Size = new System.Drawing.Size(414, 50);
             this.txtEnfermedades.TabIndex = 35;
             this.txtEnfermedades.Text = "";
             this.txtEnfermedades.TrailingIcon = null;
@@ -249,15 +250,15 @@
             this.txtTelefono.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.txtTelefono.Depth = 0;
             this.txtTelefono.Font = new System.Drawing.Font("Roboto", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
-            this.txtTelefono.Hint = "Teléfono";
+            this.txtTelefono.Hint = "Teléfono*";
             this.txtTelefono.LeadingIcon = null;
-            this.txtTelefono.Location = new System.Drawing.Point(53, 221);
-            this.txtTelefono.Margin = new System.Windows.Forms.Padding(2);
+            this.txtTelefono.Location = new System.Drawing.Point(106, 425);
+            this.txtTelefono.Margin = new System.Windows.Forms.Padding(4);
             this.txtTelefono.MaxLength = 50;
             this.txtTelefono.MouseState = MaterialSkin.MouseState.OUT;
             this.txtTelefono.Multiline = false;
             this.txtTelefono.Name = "txtTelefono";
-            this.txtTelefono.Size = new System.Drawing.Size(207, 50);
+            this.txtTelefono.Size = new System.Drawing.Size(414, 50);
             this.txtTelefono.TabIndex = 36;
             this.txtTelefono.Text = "";
             this.txtTelefono.TrailingIcon = null;
@@ -272,13 +273,13 @@
             this.txtCorreo.Font = new System.Drawing.Font("Roboto", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
             this.txtCorreo.Hint = "Correo";
             this.txtCorreo.LeadingIcon = null;
-            this.txtCorreo.Location = new System.Drawing.Point(271, 221);
-            this.txtCorreo.Margin = new System.Windows.Forms.Padding(2);
+            this.txtCorreo.Location = new System.Drawing.Point(542, 425);
+            this.txtCorreo.Margin = new System.Windows.Forms.Padding(4);
             this.txtCorreo.MaxLength = 50;
             this.txtCorreo.MouseState = MaterialSkin.MouseState.OUT;
             this.txtCorreo.Multiline = false;
             this.txtCorreo.Name = "txtCorreo";
-            this.txtCorreo.Size = new System.Drawing.Size(207, 50);
+            this.txtCorreo.Size = new System.Drawing.Size(414, 50);
             this.txtCorreo.TabIndex = 37;
             this.txtCorreo.Text = "";
             this.txtCorreo.TrailingIcon = null;
@@ -293,13 +294,13 @@
             this.txtDireccion.Font = new System.Drawing.Font("Roboto", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
             this.txtDireccion.Hint = "Dirección";
             this.txtDireccion.LeadingIcon = null;
-            this.txtDireccion.Location = new System.Drawing.Point(53, 261);
-            this.txtDireccion.Margin = new System.Windows.Forms.Padding(2);
+            this.txtDireccion.Location = new System.Drawing.Point(106, 502);
+            this.txtDireccion.Margin = new System.Windows.Forms.Padding(4);
             this.txtDireccion.MaxLength = 50;
             this.txtDireccion.MouseState = MaterialSkin.MouseState.OUT;
             this.txtDireccion.Multiline = false;
             this.txtDireccion.Name = "txtDireccion";
-            this.txtDireccion.Size = new System.Drawing.Size(424, 50);
+            this.txtDireccion.Size = new System.Drawing.Size(848, 50);
             this.txtDireccion.TabIndex = 38;
             this.txtDireccion.Text = "";
             this.txtDireccion.TrailingIcon = null;
@@ -310,7 +311,7 @@
             // 
             this.rbMujer.AutoSize = true;
             this.rbMujer.Depth = 0;
-            this.rbMujer.Location = new System.Drawing.Point(352, 108);
+            this.rbMujer.Location = new System.Drawing.Point(704, 208);
             this.rbMujer.Margin = new System.Windows.Forms.Padding(0);
             this.rbMujer.MouseLocation = new System.Drawing.Point(-1, -1);
             this.rbMujer.MouseState = MaterialSkin.MouseState.HOVER;
@@ -326,6 +327,7 @@
             // 
             this.materialCard1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.materialCard1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.materialCard1.Controls.Add(this.txtTiposangre);
             this.materialCard1.Controls.Add(this.btnConsultar);
             this.materialCard1.Controls.Add(this.txtAlergias);
             this.materialCard1.Controls.Add(this.btnCancelar);
@@ -343,13 +345,32 @@
             this.materialCard1.Controls.Add(this.txtEnfermedades);
             this.materialCard1.Depth = 0;
             this.materialCard1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.materialCard1.Location = new System.Drawing.Point(73, 23);
-            this.materialCard1.Margin = new System.Windows.Forms.Padding(8);
+            this.materialCard1.Location = new System.Drawing.Point(146, 44);
+            this.materialCard1.Margin = new System.Windows.Forms.Padding(16, 15, 16, 15);
             this.materialCard1.MouseState = MaterialSkin.MouseState.HOVER;
             this.materialCard1.Name = "materialCard1";
-            this.materialCard1.Padding = new System.Windows.Forms.Padding(8);
-            this.materialCard1.Size = new System.Drawing.Size(543, 381);
+            this.materialCard1.Padding = new System.Windows.Forms.Padding(16, 15, 16, 15);
+            this.materialCard1.Size = new System.Drawing.Size(1086, 733);
             this.materialCard1.TabIndex = 41;
+            // 
+            // txtTiposangre
+            // 
+            this.txtTiposangre.AnimateReadOnly = false;
+            this.txtTiposangre.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.txtTiposangre.Depth = 0;
+            this.txtTiposangre.Font = new System.Drawing.Font("Roboto", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            this.txtTiposangre.Hint = "Tipo de sangre";
+            this.txtTiposangre.LeadingIcon = null;
+            this.txtTiposangre.Location = new System.Drawing.Point(542, 271);
+            this.txtTiposangre.Margin = new System.Windows.Forms.Padding(4);
+            this.txtTiposangre.MaxLength = 50;
+            this.txtTiposangre.MouseState = MaterialSkin.MouseState.OUT;
+            this.txtTiposangre.Multiline = false;
+            this.txtTiposangre.Name = "txtTiposangre";
+            this.txtTiposangre.Size = new System.Drawing.Size(414, 50);
+            this.txtTiposangre.TabIndex = 42;
+            this.txtTiposangre.Text = "";
+            this.txtTiposangre.TrailingIcon = null;
             // 
             // btnConsultar
             // 
@@ -358,8 +379,8 @@
             this.btnConsultar.Depth = 0;
             this.btnConsultar.HighEmphasis = true;
             this.btnConsultar.Icon = null;
-            this.btnConsultar.Location = new System.Drawing.Point(419, 31);
-            this.btnConsultar.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
+            this.btnConsultar.Location = new System.Drawing.Point(838, 60);
+            this.btnConsultar.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
             this.btnConsultar.MouseState = MaterialSkin.MouseState.HOVER;
             this.btnConsultar.Name = "btnConsultar";
             this.btnConsultar.NoAccentTextColor = System.Drawing.Color.Empty;
@@ -376,7 +397,7 @@
             this.rbHombre.AutoSize = true;
             this.rbHombre.Depth = 0;
             this.rbHombre.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.rbHombre.Location = new System.Drawing.Point(125, 108);
+            this.rbHombre.Location = new System.Drawing.Point(250, 208);
             this.rbHombre.Margin = new System.Windows.Forms.Padding(0);
             this.rbHombre.MouseLocation = new System.Drawing.Point(-1, -1);
             this.rbHombre.MouseState = MaterialSkin.MouseState.HOVER;
@@ -390,11 +411,11 @@
             // 
             // FrmClientes
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(688, 431);
+            this.ClientSize = new System.Drawing.Size(1376, 829);
             this.Controls.Add(this.materialCard1);
-            this.Margin = new System.Windows.Forms.Padding(2);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "FrmClientes";
             this.Text = "FormClientes";
             this.materialCard1.ResumeLayout(false);
@@ -420,5 +441,6 @@
         private MaterialSkin.Controls.MaterialCard materialCard1;
         private MaterialSkin.Controls.MaterialButton btnConsultar;
         private MaterialSkin.Controls.MaterialRadioButton rbHombre;
+        private MaterialSkin.Controls.MaterialTextBox txtTiposangre;
     }
 }

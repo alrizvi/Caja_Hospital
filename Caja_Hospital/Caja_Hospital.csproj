@@ -142,21 +142,9 @@
     <Reference Include="WindowsFormsIntegration" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="db_CEMEDDataSet.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>db_CEMEDDataSet.xsd</DependentUpon>
-    </Compile>
-    <Compile Include="db_CEMEDDataSet1.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>db_CEMEDDataSet1.xsd</DependentUpon>
-    </Compile>
-    <Compile Include="db_CEMEDDataSet2.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>db_CEMEDDataSet2.xsd</DependentUpon>
-    </Compile>
+    <Compile Include="Clases\Cliente.cs" />
+    <Compile Include="Clases\Empleado.cs" />
+    <Compile Include="Clases\Servicio.cs" />
     <Compile Include="Forms\FrmSalidaEfectivo.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -170,12 +158,6 @@
       <DependentUpon>Inicio.cs</DependentUpon>
     </Compile>
     <Compile Include="Clases\clsFactura.cs" />
-    <Compile Include="Clases\Conexion.cs" />
-    <Compile Include="DSHospital.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>DSHospital.xsd</DependentUpon>
-    </Compile>
     <Compile Include="Forms\FormResumen.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -216,7 +198,6 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Clases\Desplegables.cs" />
     <EmbeddedResource Include="Forms\FrmSalidaEfectivo.resx">
       <DependentUpon>FrmSalidaEfectivo.cs</DependentUpon>
     </EmbeddedResource>
@@ -253,50 +234,6 @@
       <DesignTime>True</DesignTime>
     </Compile>
     <EmbeddedResource Include="Reporte.rdlc" />
-    <None Include="db_CEMEDDataSet.xsc">
-      <DependentUpon>db_CEMEDDataSet.xsd</DependentUpon>
-    </None>
-    <None Include="db_CEMEDDataSet.xsd">
-      <Generator>MSDataSetGenerator</Generator>
-      <LastGenOutput>db_CEMEDDataSet.Designer.cs</LastGenOutput>
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="db_CEMEDDataSet.xss">
-      <DependentUpon>db_CEMEDDataSet.xsd</DependentUpon>
-    </None>
-    <None Include="db_CEMEDDataSet1.xsc">
-      <DependentUpon>db_CEMEDDataSet1.xsd</DependentUpon>
-    </None>
-    <None Include="db_CEMEDDataSet1.xsd">
-      <Generator>MSDataSetGenerator</Generator>
-      <LastGenOutput>db_CEMEDDataSet1.Designer.cs</LastGenOutput>
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="db_CEMEDDataSet1.xss">
-      <DependentUpon>db_CEMEDDataSet1.xsd</DependentUpon>
-    </None>
-    <None Include="db_CEMEDDataSet2.xsc">
-      <DependentUpon>db_CEMEDDataSet2.xsd</DependentUpon>
-    </None>
-    <None Include="db_CEMEDDataSet2.xsd">
-      <Generator>MSDataSetGenerator</Generator>
-      <LastGenOutput>db_CEMEDDataSet2.Designer.cs</LastGenOutput>
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="db_CEMEDDataSet2.xss">
-      <DependentUpon>db_CEMEDDataSet2.xsd</DependentUpon>
-    </None>
-    <None Include="DSHospital.xsc">
-      <DependentUpon>DSHospital.xsd</DependentUpon>
-    </None>
-    <None Include="DSHospital.xsd">
-      <SubType>Designer</SubType>
-      <Generator>MSDataSetGenerator</Generator>
-      <LastGenOutput>DSHospital.Designer.cs</LastGenOutput>
-    </None>
-    <None Include="DSHospital.xss">
-      <DependentUpon>DSHospital.xsd</DependentUpon>
-    </None>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -315,13 +252,6 @@
     <None Include="Resources\Blanco.png" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="db_CEMED.mdf">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="db_CEMED_log.ldf">
-      <DependentUpon>db_CEMED.mdf</DependentUpon>
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
     <None Include="Resources\linea gris.png" />
     <None Include="Resources\Normal.png" />
   </ItemGroup>

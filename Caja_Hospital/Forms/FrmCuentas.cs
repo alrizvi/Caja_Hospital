@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Caja_Hospital.Clases;
+using Newtonsoft.Json;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -6,6 +8,7 @@ using System.Data;
 using System.Data.SqlClient;
 using System.Drawing;
 using System.Linq;
+using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -14,17 +17,69 @@ namespace Caja_Hospital.Forms
 {
     public partial class FrmCuentas : Form
     {
-        Conexion cn = new Conexion();
+        // URL de la API
+        private const string TiposervicioUrl = "http://apicemed.somee.com/api/Tipo_Servicio/BuscarTodos";
+
         public FrmCuentas()
         {
             InitializeComponent();
 
+            // Llamar a la función para cargar tipos de servicio al iniciar el formulario
+            CargarTiposDeServicioAsync();
         }
 
-        Desplegables tp = new Desplegables();
+        public async Task CargarTiposDeServicioAsync()
+        {
+            try
+            {
+                // Realizar solicitud HTTP a la API
+                using (HttpClient client = new HttpClient())
+                {
+                    HttpResponseMessage response = await client.GetAsync(TiposervicioUrl);
+
+                    // Verificar si la solicitud fue exitosa
+                    if (response.IsSuccessStatusCode)
+                    {
+                        // Leer el contenido de la respuesta
+                        string json = await response.Content.ReadAsStringAsync();
+
+                        // Deserializar el JSON
+                        var result = JsonConvert.DeserializeObject<ApiTipoServicio>(json);
+
+                        // Verificar si la operación fue exitosa
+                        if (result.operacion == "exitosa")
+                        {
+                            // Extraer la lista de tipos de servicio
+                            List<TipoServicio> tiposDeServicio = result.data;
+
+                            // Limpiar el ComboBox
+                            cbTipoServicio.Items.Clear();
+
+                            // Llenar el ComboBox con los nombres de los tipos de servicio
+                            foreach (var tipoServicio in tiposDeServicio)
+                            {
+                                cbTipoServicio.Items.Add(tipoServicio.nombre);
+                            }
+                        }
+                        else
+                        {
+                            MessageBox.Show("Error en la operación: " + result.mensaje);
+                        }
+                    }
+                    else
+                    {
+                        MessageBox.Show("Error al obtener tipos de servicio. Código de estado: " + response.StatusCode);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error: " + ex.Message);
+            }
+        }
+
         private void FrmCuentas_Load(object sender, EventArgs e)
         {
-            cbTipoServicio.DataSource = tp.TipoServicio();
             cbTipoServicio.DisplayMember = "Nombre";
             cbTipoServicio.ValueMember = "ID_TipoServicio";
         }
@@ -36,35 +91,7 @@ namespace Caja_Hospital.Forms
 
         private void cbServicio_SelectedIndexChanged(object sender, EventArgs e)
         {
-            try
-            {
-                SqlConnection connection = cn.LeerCadena();
-                // Obtén el ID del servicio seleccionado en el ComboBox cbServicio
-                string idServicio = cbServicio.SelectedValue.ToString();
-
-                // Construye la consulta SQL para obtener el costo del servicio
-                string query = "SELECT Costo FROM tblServicio WHERE ID_Servicio = @IdServicio";
-
-                // Crea un nuevo comando SQL
-                using (SqlCommand command = new SqlCommand(query, connection))
-                {
-                    // Asigna el parámetro @IdServicio con el valor seleccionado
-                    command.Parameters.AddWithValue("@IdServicio", idServicio);
-
-                    // Ejecuta la consulta SQL y obtiene el valor
-                    object costo = command.ExecuteScalar();
-
-                    // Verifica si se obtuvo un valor válido
-                    if (costo != null && costo != DBNull.Value)
-                    {
-                        // Muestra el costo en el TextBox txtCosto
-                        txtCosto.Text = costo.ToString();
-                    }
-                }
-            }
-            catch
-            {
-            }
+        
         }
 
         private void cbTipoServicio_SelectedIndexChanged(object sender, EventArgs e)
@@ -101,27 +128,7 @@ namespace Caja_Hospital.Forms
 
         private void LoadComboBox2Data(string selectedValue)
         {
-            try
-            {
-                // Construye la consulta SQL para llenar cbServicio usando el valor seleccionado de cb1.
-                SqlConnection connection = cn.LeerCadena();
-                SqlDataAdapter da = new SqlDataAdapter("SELECT * FROM tblServicio WHERE ID_TipoServicio = @SelectedValue", connection);
-                da.SelectCommand.CommandType = CommandType.Text;
-
-                // Aquí asignamos el parámetro en el objeto SqlCommand, no en SqlDataAdapter.
-                da.SelectCommand.Parameters.AddWithValue("@SelectedValue", selectedValue);
-
-                DataTable dt = new DataTable();
-                da.Fill(dt);
-
-                cbServicio.DataSource = dt;
-                cbServicio.DisplayMember = "Nombre"; // Ajusta a la columna deseada
-                cbServicio.ValueMember = "ID_Servicio"; // Ajusta a la columna deseada
-            }
-            catch
-            {
-
-            }
+            
         }
 
         private void rbEfectivo_CheckedChanged(object sender, EventArgs e)
@@ -134,33 +141,53 @@ namespace Caja_Hospital.Forms
             txtPagado.Text = lblTotalAPagar.Text;
         }
 
-        private void btnConsultar_Click(object sender, EventArgs e)
+        private async void btnConsultar_Click(object sender, EventArgs e)
         {
-            SqlConnection connection = cn.LeerCadena();
-            // Obtén la cédula ingresada en el txtDocumento
-            string documento = txtDocumento.Text;
+            string celuda = txtDocumento.Text;
 
-            string query = "SELECT Nombres + ' ' + Apellidos AS NombreCompleto FROM tblPaciente WHERE Documento = @Documento";
-
-            using (SqlCommand command = new SqlCommand(query, connection))
+            try
             {
-                command.Parameters.AddWithValue("@Documento", documento);
+                // Construir la URL de la API con la cédula proporcionada
+                string apiUrl = $"http://apicemed.somee.com/api/Cliente/BuscarCliente/{celuda}";
 
-                // Ejecuta la consulta
-                object result = command.ExecuteScalar();
+                // Realizar la solicitud HTTP GET
+                using (HttpClient client = new HttpClient())
+                {
+                    HttpResponseMessage response = await client.GetAsync(apiUrl);
 
-                // Verifica si se encontró un paciente con la cédula
-                if (result != null)
-                {
-                    // Si se encontró, muestra el nombre completo en el lblNombres
-                    lblNombres.Text = result.ToString();
+                    if (response.IsSuccessStatusCode)
+                    {
+                        // Procesar la respuesta
+                        string json = await response.Content.ReadAsStringAsync();
+
+                        // Deserializar el JSON a un objeto ClienteResponse
+                        ClienteResponse clienteResponse = JsonConvert.DeserializeObject<ClienteResponse>(json);
+
+                        // Verificar si la operación fue exitosa
+                        if (clienteResponse.operacion == "exitosa")
+                        {
+                            // Asignar los valores a los controles del formulario
+                            lblNombres.Text = $"{clienteResponse.data.nombre} {clienteResponse.data.apellido}";
+
+                            // Almacenar el ID del cliente en una variable
+                            int idCliente = clienteResponse.data.id_Cliente;
+
+                            // Puedes usar idCliente según sea necesario
+                        }
+                        else
+                        {
+                            MessageBox.Show("Error: " + clienteResponse.mensaje);
+                        }
+                    }
+                    else
+                    {
+                        MessageBox.Show("Error en la solicitud a la API. Código de estado: " + response.StatusCode);
+                    }
                 }
-                else
-                {
-                    // Si no se encontró, muestra un mensaje indicando que no existe el paciente
-                    MessageBox.Show("No se encontró ningún paciente con la cédula ingresada.");
-                    lblNombres.Text = "Nombres"; // Limpia el Label si no se encuentra un paciente
-                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error: " + ex.Message);
             }
         }
 
@@ -190,13 +217,13 @@ namespace Caja_Hospital.Forms
                     ObtenerTotal();
                 }
             }
-            catch (Exception ex)
+            catch
             {
                 // Manejo de excepciones, puedes agregar un MessageBox o registros de error aquí si es necesario
             }
 
         }
-
+        
         private void textBox1_TextChanged(object sender, EventArgs e)
         {
             try
@@ -213,94 +240,6 @@ namespace Caja_Hospital.Forms
 
         private void iconButton1_Click(object sender, EventArgs e)
         {
-            // Crear una conexión a la base de datos
-            SqlConnection connection = cn.LeerCadena();
-
-            // Variables para almacenar los valores
-            int idPaciente;
-            int idServicio;
-
-                // Consulta SQL para obtener el ID_Paciente en función del Documento
-                string queryPaciente = "SELECT ID_Paciente FROM tblPaciente WHERE Documento = @Documento";
-
-                using (SqlCommand commandPaciente = new SqlCommand(queryPaciente, connection))
-                {
-                    // Establecer el parámetro @Documento
-                    string selectedDoc = txtDocumento.Text;
-                    commandPaciente.Parameters.AddWithValue("@Documento", selectedDoc);
-
-                    // Ejecutar la consulta SQL y obtener el resultado
-                    object resultPaciente = commandPaciente.ExecuteScalar();
-
-                    // Si se encuentra un resultado, asignar el ID_Paciente a la variable
-                    idPaciente = Convert.ToInt32(resultPaciente);
-                }
-
-                // Consulta SQL para obtener el ID_Servicio en función del nombre de servicio
-                string selectedServicio = cbServicio.Text;
-                string queryServicio = "SELECT ID_Servicio FROM tblServicio WHERE Nombre = @Nombre";
-
-                using (SqlCommand commandServicio = new SqlCommand(queryServicio, connection))
-                {
-                    // Establecer el parámetro @NombreServicio
-                    commandServicio.Parameters.AddWithValue("@Nombre", selectedServicio);
-
-                    // Ejecutar la consulta SQL y obtener el resultado
-                    object resultServicio = commandServicio.ExecuteScalar();
-
-                    // Si se encuentra un resultado, asignar el ID_Servicio a la variable
-                    idServicio = Convert.ToInt32(resultServicio);
-                }
-
-            // Datos a insertar
-            string metodoPago;
-
-            if (rbTerjetaCredito.Checked)
-            {
-
-                metodoPago = "Tarjeta de credito";
-            }
-            else
-            {
-
-                metodoPago = "Efectivo";
-            }
-
-            decimal monto = decimal.Parse(lblTotalAPagar.Text);
-            string autorizacion = txtAutorizacion.Text;
-
-            try
-            {
-                // Establecer la conexión a la base de datos
-                using (connection)
-                {
-                    // Crear la consulta SQL para la inserción
-                    string query = "INSERT INTO tblTransaccion (Metodo_Pago, Monto, Autorizacion, ID_Paciente, ID_Servicio) " +
-                                   "VALUES (@MetodoPago, @Monto, @Autorizacion, @IDPaciente, @IDServicio)";
-
-                    // Crear el comando SQL
-                    using (SqlCommand command = new SqlCommand(query, connection))
-                    {
-                        // Agregar los parámetros
-                        command.Parameters.AddWithValue("@MetodoPago", metodoPago);
-                        command.Parameters.AddWithValue("@Monto", monto);
-                        command.Parameters.AddWithValue("@Autorizacion", autorizacion);
-                        command.Parameters.AddWithValue("@IDPaciente", idPaciente);
-                        command.Parameters.AddWithValue("@IDServicio", idServicio);
-
-                        // Ejecutar la consulta SQL
-                        command.ExecuteNonQuery();
-
-                        MessageBox.Show("Los datos de la transacción se han insertado correctamente en la base de datos.");
-                    }
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Error al insertar los datos de la transacción: " + ex.Message);
-            }
-
-
             clsFactura.CreaTicket Ticket1 = new clsFactura.CreaTicket();
 
             Ticket1.TextoCentro("CEMED Hospital"); //imprime una linea de descripcion

@@ -1,10 +1,13 @@
-﻿using System;
+﻿using Caja_Hospital.Clases;
+using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Data.SqlClient;
 using System.Drawing;
 using System.Linq;
+using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -13,74 +16,85 @@ namespace Caja_Hospital.Forms
 {
     public partial class FrmServicios : Form
     {
-        Conexion cn = new Conexion();
+        // URL de la API
+        private const string ApiUrl = "http://apicemed.somee.com/api/Tipo_Servicio/BuscarTodos";
+
         public FrmServicios()
         {
             InitializeComponent();
+
+            // Llamar a la función para cargar tipos de servicio al iniciar el formulario
+            CargarTiposDeServicioAsync();
         }
 
         private void btnAgregar_Click(object sender, EventArgs e)
         {
-            // Datos a insertar
-            string nombreServicio = txtServicio.Text;
-            decimal costo = decimal.Parse(txtCosto.Text);
-            string descripcion = txtDescripcion.Text;
-            string requisitos = txtRequisitos.Text;
-            if (txtRequisitos.Text == "")
-            {
-                txtRequisitos.Text = "Ninguno";
-            }
-            int idTipoServicio = (int)cbTipoServicio.SelectedValue; // Reemplaza con tu lógica para obtener el ID de tipo de servicio
+           
+        }
 
+        private void FrmServicios_Load(object sender, EventArgs e)
+        {
+            
+        }
+
+        private void btnCancelar_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        public async Task CargarTiposDeServicioAsync()
+        {
             try
             {
-                // Establecer la conexión a la base de datos
-                using (SqlConnection connection = cn.LeerCadena())
+                // Realizar solicitud HTTP a la API
+                using (HttpClient client = new HttpClient())
                 {
-                    connection.Open();
+                    HttpResponseMessage response = await client.GetAsync(ApiUrl);
 
-                    // Crear la consulta SQL para la inserción
-                    string query = "INSERT INTO tblServicio (Nombre, Costo, Descripcion, Requisitos, ID_TipoServicio, FechaIngreso) " +
-                                   "VALUES (@Nombre, @Costo, @Descripcion, @Requisitos, @ID_TipoServicio, getdate())";
-
-                    // Crear el comando SQL
-                    using (SqlCommand command = new SqlCommand(query, connection))
+                    // Verificar si la solicitud fue exitosa
+                    if (response.IsSuccessStatusCode)
                     {
-                        // Agregar los parámetros
-                        command.Parameters.AddWithValue("@Nombre", nombreServicio);
-                        command.Parameters.AddWithValue("@Costo", costo);
-                        command.Parameters.AddWithValue("@Descripcion", descripcion);
-                        command.Parameters.AddWithValue("@Requisitos", requisitos);
-                        command.Parameters.AddWithValue("@ID_TipoServicio", idTipoServicio);
+                        // Leer el contenido de la respuesta
+                        string json = await response.Content.ReadAsStringAsync();
 
-                        // Ejecutar la consulta SQL
-                        command.ExecuteNonQuery();
+                        // Deserializar el JSON
+                        var result = JsonConvert.DeserializeObject<ApiTipoServicio>(json);
 
-                        MessageBox.Show("Los datos se han insertado correctamente en la base de datos.");
+                        // Verificar si la operación fue exitosa
+                        if (result.operacion == "exitosa")
+                        {
+                            // Extraer la lista de tipos de servicio
+                            List<TipoServicio> tiposDeServicio = result.data;
+
+                            // Limpiar el ComboBox
+                            cbTipoServicio.Items.Clear();
+
+                            // Llenar el ComboBox con los nombres de los tipos de servicio
+                            foreach (var tipoServicio in tiposDeServicio)
+                            {
+                                cbTipoServicio.Items.Add(tipoServicio.nombre);
+                            }
+                        }
+                        else
+                        {
+                            MessageBox.Show("Error en la operación: " + result.mensaje);
+                        }
+                    }
+                    else
+                    {
+                        MessageBox.Show("Error al obtener tipos de servicio. Código de estado: " + response.StatusCode);
                     }
                 }
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Error al insertar los datos: " + ex.Message);
+                MessageBox.Show("Error: " + ex.Message);
             }
         }
 
-        Desplegables tp = new Desplegables();
-        private void FrmServicios_Load(object sender, EventArgs e)
+        private void cbTipoServicio_SelectedIndexChanged(object sender, EventArgs e)
         {
-            cbTipoServicio.DataSource = tp.TipoServicio();
-            cbTipoServicio.DisplayMember = "Nombre";
-            cbTipoServicio.ValueMember = "ID_TipoServicio";
-        }
 
-        private void btnCancelar_Click(object sender, EventArgs e)
-        {
-            txtServicio.Text = string.Empty;
-            txtCosto.Text = string.Empty;
-            txtDescripcion.Text = string.Empty;
-            txtRequisitos.Text = string.Empty;
-            cbTipoServicio.Text = string.Empty;
         }
     }
 }

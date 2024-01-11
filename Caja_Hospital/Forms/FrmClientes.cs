@@ -13,13 +13,13 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using Newtonsoft.Json;
 using System.Security.Policy;
+using Caja_Hospital.Clases;
 
 
 namespace Caja_Hospital.Forms
 {
     public partial class FrmClientes : Form
     {
-        Conexion cn = new Conexion();
         public FrmClientes()
         {
             InitializeComponent();
@@ -28,79 +28,70 @@ namespace Caja_Hospital.Forms
             materialSkinManager.ColorScheme = new ColorScheme(Primary.BlueGrey800, Primary.BlueGrey900, Primary.BlueGrey500, Accent.Red400, TextShade.WHITE);
         }
 
-        private void btnAgregar_Click(object sender, EventArgs e)
+        private async void btnAgregar_Click(object sender, EventArgs e)
         {
-            
-            // Datos a insertar
-            int tipoDocumento = (cbTipoDocumento.SelectedItem.ToString() == "Cedula") ? 2 : 1;
-            string documento = txtDocumento.Text;
-            string nombres = txtNombres.Text;
-            string apellidos = txtApellidos.Text;
-            string sexo = "";
-            if (rbHombre.Checked)
-            {
-                
-                sexo = "M";
-            }
-            else
-            {
-                
-                sexo = "F";
-            }
+            // Obtener los datos del formulario
+            string nombre = txtNombres.Text;
+            string apellido = txtApellidos.Text;
+            string cedula = txtDocumento.Text;
+            string direccion = txtDireccion.Text;
+            string telefono = txtTelefono.Text;
             DateTime fechaNacimiento = DateTime.Parse(txtFechaNacimiento.Text);
             string alergias = txtAlergias.Text;
-            if (txtAlergias.Text == "")
-            {
-                alergias = "Ninguna";
-            }
-            
             string enfermedades = txtEnfermedades.Text;
-            if (txtEnfermedades.Text == "")
-            {
-                enfermedades = "Ninguna";
-            }
-            
-            string telefono = txtTelefono.Text;
-            string correo = txtCorreo.Text;
-            string direccion = txtDireccion.Text;
+            string sexo = rbHombre.Checked ? "M" : "F";
+            string seguro = "NO";  // Debes establecer el valor adecuado para el seguro
+            string tipoSangre = txtTiposangre.Text;  // Debes establecer el valor adecuado para el tipo de sangre
+            DateTime fechaIngreso = DateTime.UtcNow;  // Utiliza la fecha actual en formato UTC
 
-            try
+            // Crear el objeto Cliente con los datos del formulario
+            Cliente nuevoCliente = new Cliente
             {
-                // Establecer la conexión a la base de datos
-                using (SqlConnection connection = cn.LeerCadena())
+                nombre = nombre,
+                apellido = apellido,
+                cedula = cedula,
+                direccion = direccion,
+                telefono = telefono,
+                fecha_Nacimiento = fechaNacimiento,
+                seguro = seguro,
+                sexo = sexo,
+                sangre = tipoSangre,
+                enfermedades = enfermedades,
+                alergias = alergias,
+                fecha_Ingreso = fechaIngreso
+            };
+
+            // Convertir el objeto Cliente a JSON
+            string jsonCliente = JsonConvert.SerializeObject(nuevoCliente);
+            MessageBox.Show(jsonCliente);
+
+            // Realizar la solicitud HTTP POST
+            using (HttpClient client = new HttpClient())
+            {
+                try
                 {
-                    // Crear la consulta SQL para la inserción
-                    string query = "INSERT INTO tblPaciente (TipoDocumento, Documento, Nombres, Apellidos, Sexo, FechaNacimiento, Alergias, Enfermedades, Telefono, Correo, Direccion) " +
-                                   "VALUES (@TipoDocumento, @Documento, @Nombres, @Apellidos, @Sexo, @FechaNacimiento, @Alergias, @Enfermedades, @Telefono, @Correo, @Direccion)";
+                    string url = "http://apicemed.somee.com/api/Cliente/AgregarCliente";  // Reemplaza con la URL correcta de tu API
+                    StringContent content = new StringContent(jsonCliente, Encoding.UTF8, "application/json");
 
-                    // Crear el comando SQL
-                    using (SqlCommand command = new SqlCommand(query, connection))
+                    HttpResponseMessage response = await client.PostAsync(url, content);
+
+                    if (response.IsSuccessStatusCode)
                     {
-                        // Agregar los parámetros
-                        command.Parameters.AddWithValue("@TipoDocumento", tipoDocumento);
-                        command.Parameters.AddWithValue("@Documento", documento);
-                        command.Parameters.AddWithValue("@Nombres", nombres);
-                        command.Parameters.AddWithValue("@Apellidos", apellidos);
-                        command.Parameters.AddWithValue("@Sexo", sexo);
-                        command.Parameters.AddWithValue("@FechaNacimiento", fechaNacimiento);
-                        command.Parameters.AddWithValue("@Alergias", alergias);
-                        command.Parameters.AddWithValue("@Enfermedades", enfermedades);
-                        command.Parameters.AddWithValue("@Telefono", telefono);
-                        command.Parameters.AddWithValue("@Correo", correo);
-                        command.Parameters.AddWithValue("@Direccion", direccion);
-
-                        // Ejecutar la consulta SQL
-                        command.ExecuteNonQuery();
-
-                        MessageBox.Show("Los datos se han insertado correctamente en la base de datos.");
+                        // Procesar la respuesta si es necesario
+                        MessageBox.Show("Cliente agregado exitosamente.");
+                    }
+                    else
+                    {
+                        MessageBox.Show("Error al agregar el cliente. Código de estado: " + response.StatusCode);
                     }
                 }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Error: " + ex.Message);
+                }
             }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Error al insertar los datos: " + ex.Message);
-            }      
         }
+
         private void btnCancelar_Click(object sender, EventArgs e)
         {
             cbTipoDocumento.Text = txtDocumento.Text = txtApellidos.Text = txtNombres.Text = txtFechaNacimiento.Text = txtAlergias.Text = txtEnfermedades.Text = txtTelefono.Text = txtCorreo.Text = txtDireccion.Text = string.Empty;
@@ -253,7 +244,7 @@ namespace Caja_Hospital.Forms
 
         private void txtTodos_TextChanged(object sender, EventArgs e)
         {
-            if (txtDocumento.Text != string.Empty && txtNombres.Text != string.Empty && txtApellidos.Text != string.Empty && txtFechaNacimiento.Text != string.Empty && txtTelefono.Text != string.Empty && txtCorreo.Text != string.Empty && txtDireccion.Text != string.Empty)
+            if (txtDocumento.Text != string.Empty && txtNombres.Text != string.Empty && txtApellidos.Text != string.Empty && txtFechaNacimiento.Text != string.Empty && txtTelefono.Text != string.Empty)
             {
                 btnAgregar.Enabled = true;
             }
@@ -261,6 +252,7 @@ namespace Caja_Hospital.Forms
             else
             {
                 btnAgregar.Enabled = false;
+                btnAgregar.ForeColor = Color.White;
             }
         }
     }

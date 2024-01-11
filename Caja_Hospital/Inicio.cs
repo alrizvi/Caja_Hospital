@@ -9,16 +9,21 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Runtime.InteropServices;
 using System.Data.SqlClient;
+using Newtonsoft.Json;
+using System.Net.Http;
+using Caja_Hospital.Clases;
 
 namespace Caja_Hospital
 {
     public partial class Inicio : Form
     {
-        Conexion cn = new Conexion();
+        //Dios te ama
         public FormMainMenu MainForm { get; set; }
         public Inicio()
         {
             InitializeComponent();
+
+
         }
 
         [DllImport("user32.DLL", EntryPoint = "ReleaseCapture")]
@@ -82,27 +87,66 @@ namespace Caja_Hospital
             SendMessage(this.Handle, 0x112, 0xf012, 0);
         }
 
-        private void btnLogin_Click(object sender, EventArgs e)
+        private async void btnLogin_Click(object sender, EventArgs e)
         {
-            SqlConnection connection = cn.LeerCadena();
-            string query = "SELECT * FROM Usuarios WHERE usuario = @usuario AND contraseña = @contraseña";
-            SqlCommand command = new SqlCommand(query, connection);
-            command.Parameters.AddWithValue("@usuario", txtUser.Text);
-            command.Parameters.AddWithValue("@contraseña", txtPass.Text);
+            string cedula = txtUser.Text;
+            string clave = txtPass.Text;
 
-            SqlDataReader dr = command.ExecuteReader();
-
-            if (dr.HasRows)
+            // Verifica que los campos no estén vacíos
+            if (string.IsNullOrEmpty(cedula) || string.IsNullOrEmpty(clave))
             {
-                FormMainMenu FormMenu = new FormMainMenu();
-                this.Hide();
-                FormMenu.ShowDialog();
+                MessageBox.Show("Por favor, ingrese cédula y contraseña.");
+                return;
             }
-            else
+
+            // Realiza la solicitud a la API
+            using (HttpClient client = new HttpClient())
             {
-                MessageBox.Show("ID o contrasena incorrectos");
+                try
+                {
+                    string url = $"http://apicemed.somee.com/api/Empleado/Loggin/{cedula}/{clave}";
+                    HttpResponseMessage response = await client.GetAsync(url);
+
+                    if (response.IsSuccessStatusCode)
+                    {
+                        // Procesa la respuesta
+                        string json = await response.Content.ReadAsStringAsync();
+
+                        // Deserializa el JSON a un objeto Empleado
+                        Empleado empleado = JsonConvert.DeserializeObject<Empleado>(json);
+
+                        // Verifica si la operación fue exitosa
+                        if (empleado.operacion == "exitosa")
+                        {
+                            MessageBox.Show($"Bienvenido, {empleado.mensaje}.");
+                            // Puedes realizar otras acciones después del inicio de sesión exitoso
+
+                            // Cierra el formulario actual (Login)
+                            this.Hide();
+
+                            // Abre el formulario FormMainMenu
+                            FormMainMenu formMainMenu = new FormMainMenu();
+                            formMainMenu.ShowDialog();
+                        }
+                        else
+                        {
+                            MessageBox.Show("Error en la autenticación");
+                        }
+                    }
+                    else
+                    {
+                        // Muestra un mensaje de error si la solicitud no fue exitosa
+                        MessageBox.Show("Error en la solicitud a la API. Código: " + response.StatusCode);
+                    }
+                }
+                catch (Exception ex)
+                {
+                    // Maneja cualquier excepción que pueda ocurrir durante la solicitud
+                    MessageBox.Show("Error: " + ex.Message);
+                }
             }
         }
+
 
         private void btnCerrar_Click(object sender, EventArgs e)
         {
@@ -112,6 +156,11 @@ namespace Caja_Hospital
         private void btnMinimizar_Click(object sender, EventArgs e)
         {
             WindowState = FormWindowState.Minimized;
+        }
+
+        private void Inicio_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

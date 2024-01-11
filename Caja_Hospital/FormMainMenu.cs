@@ -201,5 +201,10 @@ namespace Caja_Hospital
             ActivateButton(sender, RGBColors.color1);
             OpenChildFrom(new FrmSalidaEfectivo());
         }
+
+        private void lblFecha_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

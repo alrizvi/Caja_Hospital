@@ -50,11 +50,11 @@
             // 
             this.txtUser.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(15)))), ((int)(((byte)(15)))), ((int)(((byte)(15)))));
             this.txtUser.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.txtUser.Font = new System.Drawing.Font("Century Gothic", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtUser.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtUser.ForeColor = System.Drawing.Color.DimGray;
-            this.txtUser.Location = new System.Drawing.Point(449, 107);
+            this.txtUser.Location = new System.Drawing.Point(490, 111);
             this.txtUser.Name = "txtUser";
-            this.txtUser.Size = new System.Drawing.Size(608, 69);
+            this.txtUser.Size = new System.Drawing.Size(663, 73);
             this.txtUser.TabIndex = 10;
             this.txtUser.Text = "USUARIO";
             this.txtUser.TextChanged += new System.EventHandler(this.txtUser_TextChanged);
@@ -65,11 +65,11 @@
             // 
             this.linkPass.ActiveLinkColor = System.Drawing.Color.FromArgb(((int)(((byte)(216)))), ((int)(((byte)(31)))), ((int)(((byte)(37)))));
             this.linkPass.AutoSize = true;
-            this.linkPass.Font = new System.Drawing.Font("Century Gothic", 9.857143F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.linkPass.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.857143F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.linkPass.LinkColor = System.Drawing.Color.DimGray;
-            this.linkPass.Location = new System.Drawing.Point(574, 418);
+            this.linkPass.Location = new System.Drawing.Point(626, 435);
             this.linkPass.Name = "linkPass";
-            this.linkPass.Size = new System.Drawing.Size(358, 30);
+            this.linkPass.Size = new System.Drawing.Size(357, 31);
             this.linkPass.TabIndex = 8;
             this.linkPass.TabStop = true;
             this.linkPass.Text = "¿Ha olvidado la contraseña?";
@@ -77,11 +77,11 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Century Gothic", 20.14286F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.14286F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.DimGray;
-            this.label1.Location = new System.Drawing.Point(664, 7);
+            this.label1.Location = new System.Drawing.Point(724, 7);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(178, 58);
+            this.label1.Size = new System.Drawing.Size(195, 63);
             this.label1.TabIndex = 13;
             this.label1.Text = "LOGIN";
             // 
@@ -89,11 +89,11 @@
             // 
             this.txtPass.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(15)))), ((int)(((byte)(15)))), ((int)(((byte)(15)))));
             this.txtPass.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.txtPass.Font = new System.Drawing.Font("Century Gothic", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtPass.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtPass.ForeColor = System.Drawing.Color.DimGray;
-            this.txtPass.Location = new System.Drawing.Point(449, 200);
+            this.txtPass.Location = new System.Drawing.Point(490, 208);
             this.txtPass.Name = "txtPass";
-            this.txtPass.Size = new System.Drawing.Size(608, 69);
+            this.txtPass.Size = new System.Drawing.Size(663, 73);
             this.txtPass.TabIndex = 11;
             this.txtPass.Text = "CONTRASEÑA";
             this.txtPass.Enter += new System.EventHandler(this.txtPass_Enter);
@@ -106,7 +106,7 @@
             this.panel1.Dock = System.Windows.Forms.DockStyle.Left;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(375, 487);
+            this.panel1.Size = new System.Drawing.Size(409, 507);
             this.panel1.TabIndex = 9;
             // 
             // pictureBox1
@@ -115,7 +115,7 @@
             this.pictureBox1.Image = global::Caja_Hospital.Properties.Resources.Blanco;
             this.pictureBox1.Location = new System.Drawing.Point(0, 0);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(375, 487);
+            this.pictureBox1.Size = new System.Drawing.Size(409, 507);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox1.TabIndex = 0;
             this.pictureBox1.TabStop = false;
@@ -124,9 +124,9 @@
             // pictureBox2
             // 
             this.pictureBox2.Image = global::Caja_Hospital.Properties.Resources.linea_gris;
-            this.pictureBox2.Location = new System.Drawing.Point(431, 138);
+            this.pictureBox2.Location = new System.Drawing.Point(470, 144);
             this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(626, 50);
+            this.pictureBox2.Size = new System.Drawing.Size(683, 52);
             this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox2.TabIndex = 14;
             this.pictureBox2.TabStop = false;
@@ -134,9 +134,9 @@
             // pictureBox3
             // 
             this.pictureBox3.Image = global::Caja_Hospital.Properties.Resources.linea_gris;
-            this.pictureBox3.Location = new System.Drawing.Point(431, 232);
+            this.pictureBox3.Location = new System.Drawing.Point(470, 242);
             this.pictureBox3.Name = "pictureBox3";
-            this.pictureBox3.Size = new System.Drawing.Size(626, 50);
+            this.pictureBox3.Size = new System.Drawing.Size(683, 52);
             this.pictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox3.TabIndex = 15;
             this.pictureBox3.TabStop = false;
@@ -148,11 +148,11 @@
             this.btnLogin.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(28)))), ((int)(((byte)(28)))), ((int)(((byte)(28)))));
             this.btnLogin.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.btnLogin.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnLogin.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnLogin.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnLogin.ForeColor = System.Drawing.Color.LightGray;
-            this.btnLogin.Location = new System.Drawing.Point(449, 320);
+            this.btnLogin.Location = new System.Drawing.Point(490, 333);
             this.btnLogin.Name = "btnLogin";
-            this.btnLogin.Size = new System.Drawing.Size(608, 60);
+            this.btnLogin.Size = new System.Drawing.Size(663, 62);
             this.btnLogin.TabIndex = 16;
             this.btnLogin.Text = "ACCEDER";
             this.btnLogin.UseVisualStyleBackColor = false;
@@ -168,9 +168,9 @@
             this.btnMinimizar.IconChar = FontAwesome.Sharp.IconChar.WindowMinimize;
             this.btnMinimizar.IconColor = System.Drawing.Color.DimGray;
             this.btnMinimizar.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            this.btnMinimizar.Location = new System.Drawing.Point(1026, 2);
+            this.btnMinimizar.Location = new System.Drawing.Point(1119, 2);
             this.btnMinimizar.Name = "btnMinimizar";
-            this.btnMinimizar.Size = new System.Drawing.Size(40, 43);
+            this.btnMinimizar.Size = new System.Drawing.Size(44, 45);
             this.btnMinimizar.TabIndex = 18;
             this.btnMinimizar.UseVisualStyleBackColor = false;
             this.btnMinimizar.Click += new System.EventHandler(this.btnMinimizar_Click);
@@ -185,19 +185,19 @@
             this.btnCerrar.IconChar = FontAwesome.Sharp.IconChar.Xmark;
             this.btnCerrar.IconColor = System.Drawing.Color.DimGray;
             this.btnCerrar.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            this.btnCerrar.Location = new System.Drawing.Point(1069, 2);
+            this.btnCerrar.Location = new System.Drawing.Point(1166, 2);
             this.btnCerrar.Name = "btnCerrar";
-            this.btnCerrar.Size = new System.Drawing.Size(40, 43);
+            this.btnCerrar.Size = new System.Drawing.Size(44, 45);
             this.btnCerrar.TabIndex = 17;
             this.btnCerrar.UseVisualStyleBackColor = false;
             this.btnCerrar.Click += new System.EventHandler(this.btnCerrar_Click);
             // 
             // Inicio
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(11F, 24F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(15)))), ((int)(((byte)(15)))), ((int)(((byte)(15)))));
-            this.ClientSize = new System.Drawing.Size(1111, 487);
+            this.ClientSize = new System.Drawing.Size(1212, 507);
             this.Controls.Add(this.txtUser);
             this.Controls.Add(this.txtPass);
             this.Controls.Add(this.btnMinimizar);
@@ -214,6 +214,7 @@
             this.Opacity = 0.9D;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Inicio";
+            this.Load += new System.EventHandler(this.Inicio_Load);
             this.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Inicio_MouseDown);
             this.panel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
